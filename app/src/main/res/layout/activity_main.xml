@@ -8,16 +8,75 @@
     tools:context=".MainActivity">
 
     <ImageView
-    android:id="@+id/foto"
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    tools:src="@tools:sample/avatars" />
+        android:id="@+id/foto"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        tools:src="@tools:sample/avatars" />
 
     <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_toEndOf="@+id/foto"
-    android:layout_alignTop="@+id/foto"
-    android:layout_marginStart="16dp"/>
+        android:id="@+id/nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/foto"
+        android:layout_alignTop="@+id/foto"
+        android:layout_marginStart="16dp"
+        android:hint="Nome do Superheroe"/>
+
+    <EditText
+        android:id="@+id/alterEgo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/foto"
+        android:layout_alignBottom="@+id/foto"
+        android:layout_marginStart="16dp"
+        android:hint="Alter Ego do Superheroe"/>
+    
+    <View
+        android:id="@+id/linea"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_below="@+id/foto"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bio"
+        android:textColor="@color/black"
+        android:layout_below="@+id/linea"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/descripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bio"
+        android:layout_marginTop="16dp"
+        android:hint="Descripción dos seus superpoderes"/>
+
+    <TextView
+        android:id="@+id/poder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Poder"
+        android:textColor="@color/black"
+        android:layout_below="@+id/descripcion"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/poder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        />
 
   </RelativeLayout>
