@@ -18,6 +18,9 @@
             android:layout_height="120dp"
             tools:src="@android:drawable/ic_menu_camera" />
 
+
+
+
         <EditText
             android:id="@+id/nome"
             android:layout_width="match_parent"

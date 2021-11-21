@@ -1,9 +1,15 @@
 package com.liceolapaz.dam.registrosuperhroes;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -13,10 +19,14 @@ import com.liceolapaz.dam.registrosuperhroes.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int FOTO_REQUEST_CODE = 1000;
+    private ActivityMainBinding binding;
+    private Bitmap foto_bitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.btGuardar.setOnClickListener(view -> {
@@ -30,24 +40,45 @@ public class MainActivity extends AppCompatActivity {
             openEnDetalle(nome, alterEgo, descripcion, ratio);
         });
 
-
-
-        /*Button btguardar = findViewById(R.id.bt_guardar);
-        EditText nome = findViewById(R.id.nome);
-        EditText alterEgo = findViewById(R.id.alterEgo);
-        EditText descripcion = findViewById(R.id.descripcion);
-        RatingBar ratio = findViewById(R.id.ratio);
-*/
-
+        binding.foto.setOnClickListener(view -> {
+            openFoto();
+        });
 
     }
 
+    private void openFoto() {
+        Intent camara_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+            startActivityForResult(camara_intent,FOTO_REQUEST_CODE);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode== Activity.RESULT_OK && requestCode == FOTO_REQUEST_CODE){
+            if(data!= null){
+                foto_bitmap = data.getExtras().getParcelable("data");
+                binding.foto.setImageBitmap(foto_bitmap);
+            }else{
+                Toast.makeText(this, "Foto mal sacada", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    };
+
+
+
     private void openEnDetalle(String nome, String alterEgo, String descripcion, float ratio){
+
+        Superheroe superheroe = new Superheroe( nome,  alterEgo,  descripcion,  ratio);
+
         Intent intent = new Intent(this, EnDetalle.class);
-        intent.putExtra(EnDetalle.SUPERHEROE_NOME, nome);
-        intent.putExtra(EnDetalle.SUPERHEROE_EGO, alterEgo);
-        intent.putExtra(EnDetalle.SUPERHEROE_DESCRIPCION, descripcion);
-        intent.putExtra(EnDetalle.SUPERHEROE_RATIO, ratio);
+        intent.putExtra(EnDetalle.SUPERHEROE_KEY, superheroe);
+        intent.putExtra(EnDetalle.BITMAP_KEY, foto_bitmap);
+
+
         startActivity(intent);
     }
 }

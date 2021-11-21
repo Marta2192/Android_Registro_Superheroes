@@ -2,6 +2,7 @@ package com.liceolapaz.dam.registrosuperhroes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.liceolapaz.dam.registrosuperhroes.databinding.ActivityEnDetalleBinding;
@@ -9,10 +10,10 @@ import com.liceolapaz.dam.registrosuperhroes.databinding.ActivityMainBinding;
 
 public class EnDetalle extends AppCompatActivity {
 
-    public static final String SUPERHEROE_NOME = "superheroe_nome";
-    public static final String SUPERHEROE_EGO = "superheroe_ego";
-    public static final String SUPERHEROE_DESCRIPCION = "superheroe_descripcion";
-    public static final String SUPERHEROE_RATIO = "superheroe_ratio";
+
+    public static final String SUPERHEROE_KEY = "superheroe";
+    public static final String BITMAP_KEY = "bitmap";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +22,14 @@ public class EnDetalle extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Bundle extras = getIntent().getExtras();
+        Superheroe superheroe = extras.getParcelable(SUPERHEROE_KEY);
+        Bitmap bitmap = extras.getParcelable(BITMAP_KEY);
 
-        String nome = extras.getString(SUPERHEROE_NOME);
-        String alterEgo = extras.getString(SUPERHEROE_EGO);
-        String bio = extras.getString(SUPERHEROE_DESCRIPCION);
-        float rating = extras.getFloat(SUPERHEROE_RATIO);
+        if(bitmap!=null){
+            binding.imageView.setImageBitmap(bitmap);
+        }
 
-        binding.nameTxt.setText(nome);
-        binding.egoText.setText(alterEgo);
-        binding.bioText.setText(bio);
-        binding.ratingBar.setRating(rating);
+        binding.setSuperheroe(superheroe);
 
     }
 }
