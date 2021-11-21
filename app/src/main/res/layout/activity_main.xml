@@ -1,88 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/foto"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        tools:src="@android:drawable/ic_menu_camera" />
+    <data>
 
-    <EditText
-        android:id="@+id/nome"
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/foto"
-        android:layout_alignTop="@+id/foto"
-        android:layout_marginStart="16dp"
-        android:hint="Nome do Superheroe"/>
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/alterEgo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/foto"
-        android:layout_alignBottom="@+id/foto"
-        android:layout_marginStart="16dp"
-        android:hint="Alter Ego do Superheroe"/>
-    
-    <View
-        android:id="@+id/linea"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
-        android:layout_below="@+id/foto"
-        android:layout_marginTop="16dp" />
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            tools:src="@android:drawable/ic_menu_camera" />
 
-    <TextView
-        android:id="@+id/bio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Bio"
-        android:textColor="@color/black"
-        android:layout_below="@+id/linea"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/foto"
+            android:layout_alignTop="@+id/foto"
+            android:layout_marginStart="16dp"
+            android:hint="Nome do Superheroe" />
 
-    <EditText
-        android:id="@+id/descripcion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bio"
-        android:layout_marginTop="16dp"
-        android:hint="Descripción dos seus superpoderes"/>
+        <EditText
+            android:id="@+id/alterEgo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/foto"
+            android:layout_alignBottom="@+id/foto"
+            android:layout_marginStart="16dp"
+            android:hint="Alter Ego do Superheroe" />
 
-    <TextView
-        android:id="@+id/poder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Poder"
-        android:textColor="@color/black"
-        android:layout_below="@+id/descripcion"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
+        <View
+            android:id="@+id/linea"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"
+            android:layout_below="@+id/foto"
+            android:layout_marginTop="16dp" />
 
-    <RatingBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/poder"
-        android:layout_centerHorizontal="true"
-        android:progressTint="@color/yellow"
-        android:layout_marginTop="16dp" />
+        <TextView
+            android:id="@+id/bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bio"
+            android:textColor="@color/black"
+            android:layout_below="@+id/linea"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Preme se ques REXISTRAR"
-        android:layout_alignParentBottom="true"/>
+        <EditText
+            android:id="@+id/descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bio"
+            android:layout_marginTop="16dp"
+            android:hint="Descripción dos seus superpoderes" />
 
-  </RelativeLayout>
+        <TextView
+            android:id="@+id/poder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Poder"
+            android:textColor="@color/black"
+            android:layout_below="@+id/descripcion"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <RatingBar
+            android:id="@+id/ratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/poder"
+            android:layout_centerHorizontal="true"
+            android:progressTint="@color/yellow"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/bt_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preme se queres REXISTRAR"
+            android:layout_alignParentBottom="true" />
+
+    </RelativeLayout>
+</layout>
